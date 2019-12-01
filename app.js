@@ -1,13 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var expressHbs = require('express-handlebars');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const expressHbs = require('express-handlebars');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const categoriasRouter = require('./routes/categorias');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.engine('.hbs', expressHbs({
@@ -23,7 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Usa as rotas
 app.use('/', indexRouter);
+app.use('/categorias', categoriasRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
