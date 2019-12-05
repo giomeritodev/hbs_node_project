@@ -4,11 +4,30 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const expressHbs = require('express-handlebars');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const categoriasRouter = require('./routes/categorias');
 
 const app = express();
+
+//Sessão
+	app.use(session({
+		secret: "g10m3ri70",
+		resave: true,
+		saveInitialized: true
+	}));
+
+	app.use(flash());
+
+//Middleware
+	app.use((req, res, next) => {
+		//o "locals" cria uma variavel global para o sistema
+		res.locals.success_msg = req.flash('success_msg');
+		res.locals.error_msg = req.flash('error_msg');
+		next();
+	});	
 
 // view engine setup
 app.engine('.hbs', expressHbs({

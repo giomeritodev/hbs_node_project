@@ -12,12 +12,30 @@
 		</div>
 	</div>
 	<div class="card-body">
-		{{#each categorias}}
 			<div>
-				<h3>{{nome}}</h3>
+				<table class="table responsible">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Categoria</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each categorias}}
+							<tr>
+								<td>{{cat_id}}</td>
+								<td>{{cat_nome}}</td>
+								<td>
+									<button type="button" class="btn btn-success">Editar</button>
+									<button type="button" class="btn btn-danger">Deletar</button>
+								</td>
+							</tr>
+						{{else}}
+							<h4>Nenhuma categoria cadastrada</h4>
+						{{/each}}	
+					</tbody>
+				</table>				
 			</div>
-		{{else}}
-			<h4>Nenhuma categoria cadastrada</h4>
-		{{/each}}	
 	</div>
 </div>
