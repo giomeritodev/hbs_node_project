@@ -5,7 +5,7 @@
 				<div class="cat">
 					<h4>{{title}}</h4>
 					<a href="/categorias/add">
-						<button type="button" class="btn btn-success">Nova categoria</button>
+						<button type="button" class="btn btn-success" accesskey="q">Nova (Alt+q)</button>
 					</a>
 				</div>
 			</div>
@@ -28,7 +28,7 @@
 								<td>{{cat_nome}}</td>
 								<td>
 								    <a href="/categorias/edit/{{cat_id}}" class="btn btn-success">Editar</a>
-									<a href="/categorias/delete/{{cat_id}}" class="btn btn-danger" data-confirm="Tem certeza que deseja excluir os dados selecionados?">Deletar</a>
+									<a href="/categorias/delete/{{cat_id}}" class="btn btn-danger" data-confirm="">Deletar</a>
 								</td>
 							</tr>
 						{{else}}
