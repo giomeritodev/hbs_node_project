@@ -1,11 +1,15 @@
 const conn = require('./../config/database');
 
+//Querys da categoria
+const findAll = 'SELECT * FROM tb_categorias ORDER BY createdAt DESC';
+const insert = 'INSERT INTO tb_categorias(cat_nome) VALUES(?)';
+const find = 'SELECT * FROM tb_categorias WHERE cat_id = ?';
+const update = 'UPDATE tb_categorias SET cat_nome = ? WHERE cat_id = ?';
+
 module.exports = {
 
 	findAll(req, res){
-		conn.query(`
-			SELECT * FROM tb_categorias ORDER BY createdAt DESC
-		`, (err, results) => {
+		conn.query(findAll, (err, results) => {
 
 			if(err){
 				req.flash('error_msg', 'Erro ao consultar as categorias');
@@ -21,12 +25,7 @@ module.exports = {
 	
 	save(fields){
 		return new Promise((resolve, reject) => {
-			conn.query(
-				`INSERT INTO tb_categorias(cat_nome)
-				VALUES(?)`,
-				[
-					fields.cat_nome
-				], (err, results) => {
+			conn.query(insert, [fields.cat_nome], (err, results) => {
 					if(err){
 						reject(err);
 					}else{
@@ -35,6 +34,29 @@ module.exports = {
 				}
 			);
 		});
-	}
-
+	},
+    
+    find(id){
+        return new Promise((resolve, reject) => {
+            conn.query(find, [id], (err, results) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(results);
+                }
+            });            
+        });
+    },
+    
+    update(fields, id){
+        return new Promise((resolve, reject) => {
+            conn.query(update, [fields.cat_nome, id], (err, results) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(results);
+                }
+            });
+        });
+    }
 }

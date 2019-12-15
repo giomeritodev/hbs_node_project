@@ -9,7 +9,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/add', (req, res) => {
-	res.render('pages/categoria/addCategoria', {title: 'Adicionar categoria'});
+	res.render('pages/categoria/addCategoria', {
+		title: 'Adicionar categoria'
+	});
 });
 
 router.post('/nova', (req, res) => {
@@ -34,6 +36,28 @@ router.post('/nova', (req, res) => {
 		});		
 	}
 
+});
+
+router.get('/edit/:id', (req, res) => {
+    const id = req.params.id;
+    categoria.find(id).then(categoria => {
+        res.render('pages/categoria/editCategoria', {
+            title: 'Editando categoria', 
+            categoria
+        });        
+    }).catch((err) => {
+        req.flash('error_msg', 'Erro ao identificar categoria');
+    });
+});
+
+router.post('/update/:id', (req, res) => {
+    categoria.update(req.body, req.params.id).then(categoria => {
+        req.flash('success_msg', 'Dados alterados com sucesso!');
+        res.redirect('/categorias');
+    }).catch(err => {
+        req.flash('error_msg', err.message);
+        res.redirect('/categorias');
+    });
 });
 
 module.exports = router;

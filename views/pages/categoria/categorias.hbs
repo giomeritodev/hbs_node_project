@@ -27,8 +27,8 @@
 								<td>{{cat_id}}</td>
 								<td>{{cat_nome}}</td>
 								<td>
-									<button type="button" class="btn btn-success">Editar</button>
-									<button type="button" class="btn btn-danger">Deletar</button>
+								    <a href="/categorias/edit/{{cat_id}}"><button type="button" class="btn btn-success">Editar</button></a>
+									<a href="/categorias/delete/{{cat_id}}"><button type="button" class="btn btn-danger">Deletar</button></a>
 								</td>
 							</tr>
 						{{else}}
