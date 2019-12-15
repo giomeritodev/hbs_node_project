@@ -27,8 +27,8 @@
 								<td>{{cat_id}}</td>
 								<td>{{cat_nome}}</td>
 								<td>
-								    <a href="/categorias/edit/{{cat_id}}"><button type="button" class="btn btn-success">Editar</button></a>
-									<a href="/categorias/delete/{{cat_id}}"><button type="button" class="btn btn-danger">Deletar</button></a>
+								    <a href="/categorias/edit/{{cat_id}}" class="btn btn-success">Editar</a>
+									<a href="/categorias/delete/{{cat_id}}" class="btn btn-danger" data-confirm="Tem certeza que deseja excluir os dados selecionados?">Deletar</a>
 								</td>
 							</tr>
 						{{else}}

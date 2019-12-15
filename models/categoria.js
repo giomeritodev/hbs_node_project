@@ -5,6 +5,7 @@ const findAll = 'SELECT * FROM tb_categorias ORDER BY createdAt DESC';
 const insert = 'INSERT INTO tb_categorias(cat_nome) VALUES(?)';
 const find = 'SELECT * FROM tb_categorias WHERE cat_id = ?';
 const update = 'UPDATE tb_categorias SET cat_nome = ? WHERE cat_id = ?';
+const deletar = 'DELETE FROM tb_categorias WHERE cat_id = ?';
 
 module.exports = {
 
@@ -58,5 +59,17 @@ module.exports = {
                 }
             });
         });
-    }
+    },
+    
+    deletar(id){
+        return new Promise((resolve, reject) => {
+           conn.query(deletar, [id], (err, results) => {
+               if(err){
+                   reject(err);
+               }else{
+                   resolve(results);
+               }
+           }); 
+        });
+    }    
 }

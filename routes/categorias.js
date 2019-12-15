@@ -60,4 +60,16 @@ router.post('/update/:id', (req, res) => {
     });
 });
 
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    categoria.deletar(id).then(result => {
+        req.flash('success_msg', "Dados deletados com sucesso");
+        res.redirect('/categorias');
+    }).catch(err => {
+        req.flash('error_msg', err.message);
+        res.redirect('/categorias');
+    });
+});
+
+
 module.exports = router;
