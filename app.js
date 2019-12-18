@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const categoriasRouter = require('./routes/categorias');
+const produtosRouter = require('./routes/produtos');
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Usa as rotas
 app.use('/', indexRouter);
 app.use('/categorias', categoriasRouter);
+app.use('/produtos', produtosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

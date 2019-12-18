@@ -1,0 +1,41 @@
+<div class="card mt-4">
+	<div class="card-header">
+		<div class="card-menu">
+			<div class="card-title">
+				<div class="cat">
+					<h4>{{title}}</h4>
+					<a href="/produtos/add">
+						<button type="button" class="btn btn-success" accesskey="q">Novo (Alt+q)</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+			<div>
+				<table class="table responsible">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Produto</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each produtos}}
+							<tr>
+								<td>{{prod_id}}</td>
+								<td>{{prod_nome}}</td>
+								<td>
+								    <a href="/produtos/edit/{{prod_id}}" class="btn btn-success">Editar</a>
+									<a href="/produtos/delete/{{prod_id}}" class="btn btn-danger" data-confirm="">Deletar</a>
+								</td>
+							</tr>
+						{{else}}
+							<h4>Nenhum produto cadastrado</h4>
+						{{/each}}	
+					</tbody>
+				</table>				
+			</div>
+	</div>
+</div>

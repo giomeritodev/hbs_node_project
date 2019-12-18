@@ -1,0 +1,40 @@
+{{#each erros}}
+	<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-menu">
+			<div class="card-title">
+				<div class="cat">
+					<h4>{{title}}</h4>
+					<a href="/produtos">
+						<button type="button" class="btn btn-primary" accesskey="a">Lista (Alt+a)</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		<form action="/produtos/novo" method="post">
+			<div class="form-group">
+				<div class="col-md-12">
+					<label for="prod_nome">Nome</label>
+					<input type="text" name="prod_nome" class="form-control" autofocus>
+				</div>
+                <div class="col-md-12">
+                    <label for="prod_valor">Valor</label>
+                    <input type="text" name="prod_valor" class="form-control" onkeypress="$(this).mask('R$ 999.999,99')"> 
+                </div>
+			</div>
+			<div class="form-group">
+				<div>
+					<a href="/categorias/nova">
+						<button type="submit" class="btn btn-success">Salvar</button>
+					</a>	
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
