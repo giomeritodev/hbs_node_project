@@ -64,4 +64,15 @@ router.post('/update/:id', (req, res) => {
     });
 });
 
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    produtos.delete(id).then(result => {
+        req.flash('success_msg', 'Dados deletados com sucesso');
+        res.redirect('/produtos');
+    }).catch(err => {
+        req.flash('error_msg', err.message);
+        res.redirect('/produtos');
+    });
+});
+
 module.exports = router;

@@ -8,6 +8,7 @@ const findCategoriaProduto = 'select * from tb_produtos p inner join tb_categori
 const findCatProduto = 'select categoria_id from tb_produtos where prod_id = ?';
 const alterar = 'update tb_produtos set prod_nome = ?, prod_valor = ?, categoria_id = ? where prod_id = ?';
 const find = 'select * from tb_produtos where prod_id = ?';
+const deletar = 'delete from tb_produtos where prod_id = ?';
 
 module.exports = {
     
@@ -90,6 +91,18 @@ module.exports = {
                    resolve(results);
                }
            });
+        });
+    },
+    
+    delete(id){
+        return new Promise((resolve, reject) => {
+            conn.query(deletar, [id], (err, result) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(result);
+                }
+            });
         });
     }
 }
