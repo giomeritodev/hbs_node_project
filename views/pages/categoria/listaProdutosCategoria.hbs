@@ -1,0 +1,27 @@
+    <div class="card mt-1">
+        <div class="card-header">
+            <div class="card-title">
+                {{#each categoria}}
+                    <h3>Categoria: {{cat_nome}}</h3>
+                    <small>Produtos relacionados a categoria citada</small>
+                {{/each}}
+            </div>            
+        </div>
+{{#each produtos}}
+        <div class="body ml-2 mt-1">
+            <h4>{{prod_nome}}</h4>
+            <hr>
+        </div>
+{{else}}
+
+    </div>
+
+
+    <div class="card mt-1">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Nenhum produto relacionado a esta categoria!</h4>
+            </div>
+        </div>
+    </div>   
+{{/each}}

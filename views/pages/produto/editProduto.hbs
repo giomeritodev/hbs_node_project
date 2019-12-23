@@ -1,0 +1,50 @@
+<div class="card">
+	<div class="card-header">
+		<div class="card-menu">
+			<div class="card-title">
+				<div class="cat">
+					<h4>{{title}}</h4>
+					<a href="/produtos">
+						<button type="button" class="btn btn-primary" accesskey="a">Lista (Alt+a)</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+        {{#each produto}}
+		<form action="/produtos/update/{{prod_id}}" method="post">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <h4>Código: {{prod_id}}</h4>
+                </div>
+				<div class="col-md-12">
+					<label for="prod_nome">Nome</label>
+					<input type="text" name="prod_nome" class="form-control" autofocus value="{{prod_nome}}">
+				</div>
+                <div class="col-md-12">
+                    <label for="prod_valor">Valor</label>
+                    <input type="text" id="prod_valor" name="prod_valor" class="prod_valor form-control" value="{{prod_valor}}">
+                </div>
+                <div class="col-md-12">
+                    <label for="categoria_id">Categoria</label>
+                    <select  class="form-control" name="categoria_id">                       
+                           <option value="{{categoria_id}}">{{categoria_id}} - {{cat_nome}}</option>
+        {{else}}
+            Nenhum item foi selecionado!
+        {{/each}}
+                        {{#each categorias}}
+                            <option value="{{cat_id}}">{{cat_id}} - {{cat_nome}}</option>
+                        {{else}}
+                            Nenhuma categoria encontrada!
+                        {{/each}}
+                    </select>
+                </div>
+			</div>
+			<div class="form-group">
+				<div>
+					<button type="submit" class="btn btn-success">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

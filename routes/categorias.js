@@ -71,5 +71,20 @@ router.get('/delete/:id', (req, res) => {
     });
 });
 
+router.get('/consulta/:id', (req, res) => {
+    const id = req.params.id;
+    
+    categoria.findProdutosCategoria(id).then(produtos => {       
+        categoria.find(id).then(categoria => {
+            res.render('pages/categoria/listaProdutosCategoria', {produtos, categoria});
+        }).catch(err => {
+            req.flash('error_msg', err.message);
+            res.redirect('/categorias');
+        });
+    }).catch(err => {
+        req.flash('error_msg', err.message);
+        res.redirect('/categorias');
+    });       
+});
 
 module.exports = router;
