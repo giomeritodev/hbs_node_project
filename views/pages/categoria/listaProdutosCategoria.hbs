@@ -2,17 +2,33 @@
         <div class="card-header">
             <div class="card-title">
                 {{#each categoria}}
+                    <h5>Código: {{cat_id}}</h5>
                     <h3>Categoria: {{cat_nome}}</h3>
+                    <p>Data: {{createdAt}}</p>
                     <small>Produtos relacionados a categoria citada</small>
                 {{/each}}
             </div>            
         </div>
-{{#each produtos}}
         <div class="body ml-2 mt-1">
-            <h4>{{prod_nome}}</h4>
-            <hr>
-        </div>
+            <table class="table responsive">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                    </tr>        
+                </thead>
+{{#each produtos}}
+                <tbody>
+                    <tr>
+                        <td>{{prod_id}}</td>
+                        <td>{{prod_nome}}</td>
+                        <td>R$: {{prod_valor}},00</td>
+                    </tr>
+                </tbody>
 {{else}}
+            </table>           
+        </div>
 
     </div>
 
