@@ -4,3 +4,20 @@
 	display: grid;
 	grid-template-columns: 1fr 90px 40px;
 }
+
+/*
+    Css para pagina de adição de clientes
+*/
+h11 {
+    color:red;
+}
+
+#logo {
+        width:50%;
+        height:50%;
+}
+
+.panel-heading{
+    font-size:150%;
+}
+/*Fim do css pag clientes*/

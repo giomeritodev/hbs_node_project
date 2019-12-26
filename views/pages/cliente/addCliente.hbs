@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+           <div class="cat">
+                <h4>{{title}}</h4>
+                <a href="/clientes">
+                    <button type="button" class="btn btn-primary" accesskey="a">Lista (Alt+a)</button></a>
+           </div>
+        </div>
+    </div>
+    <div class="card-body">
+        
+        <form action="/clientes/novo" method="post">
+            <div class="form-group col-12">
+                <div class="col-md-12">
+                    <label for="cli_nome">Nome</label>
+                    <input type="text" name="cli_nome" autofocus class="form-control">
+                </div>
+                
+                <div class="col-md-12 col-sm-12">
+                    <label for="cli_cpf">CPF</label>
+                    <input type="text" name="cli_cpf" id="cpf" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
+                </div>
+                <!--
+                    <div class="col-md-6 col-sm-12">
+                        <label for="cli_cnpj">CNPJ</label>
+                        <input type="text" class="form-control" onkeypress="$(this).mask('00.000-000')">                    
+                    </div>
+                -->
+                <div class="col-md-12">
+                    <label for="cli_email">Email</label>
+                    <input type="email" name="cli_email" class="form-control">
+                </div>                
+            </div>    
+            <div class="row ml-3 mr-3">
+                <div class="col-md-6 col-sm-12">
+                    <label for="cli_fone">Telefone</label>
+                    <input type="text" name="cli_fone" class="form-control" onkeypress="$(this).mask('(00)0000 - 0000')">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="cli_fone">Telefone</label>
+                    <input type="text" name="cli_celular" class="form-control" onkeypress="$(this).mask('(00)0 0000 - 0000')">
+                </div>
+            </div>
+            <div class="row ml-3 mr-3">
+                <div class="col-md-3 col-sm-12">
+                    <label for="cli_cep">CEP</label>
+                    <input type="text" class="form-control" onkeypress="$(this).mask('00.000-000')">
+                </div>
+                <div class="col-md-9 col-sm-12">
+                     <label for="cli_rua">Rua</label>
+                    <input type="text" name="cli_rua" class="form-control">
+                </div>
+            </div>
+            <div class="row ml-3 mr-3">
+                <div class="col-md-4 col-sm-12">
+                    <label for="cli_complemento">Complemento</label>
+                    <input type="text" name="cli_complemento" class="form-control">
+                </div>               
+                <div class="col-md-2 col-sm-12">
+                    <label for="cli_numero">Número</label>
+                    <input type="text" name="cli_numero" class="form-control">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="cli_bairro">Bairro</label>
+                    <input type="text" name="cli_bairro" class="form-control">
+                </div>
+            </div>
+            <div class="row ml-3 mr-3">
+                <div class="col-md-8 col-sm-12">
+                    <label for="cli_cidade">Cidade</label>
+                    <input type="text" name="cli_cidade" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="cli_estado">Cidade</label>
+                    <input type="text" name="cli_estado" class="form-control">
+                </div>
+            </div>
+            
+            <div class="col mt-4">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-success" value="Salvar"> 
+                </div>
+            </div>
+                        
+        </form>
+        
+    </div>
+</div>

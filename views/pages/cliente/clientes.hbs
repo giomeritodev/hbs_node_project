@@ -1,0 +1,40 @@
+<div class="card mt-4">
+	<div class="card-header">
+        <div class="card-title">
+            <div class="cat">
+                <h4>{{title}}</h4>
+                <a href="/clientes/add">
+                    <button type="button" class="btn btn-success" accesskey="q">Nova (Alt+q)</button>
+                </a>
+            </div>
+        </div>
+	</div>
+	<div class="card-body">
+			<div>
+				<table class="table responsible">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Cliente</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each clientes}}
+							<tr>
+								<td>{{cli_id}}</td>
+								<td>{{cli_nome}}</td>
+								<td>
+								    <a href="/clientes/edit/{{cli_id}}" class="btn btn-success">Editar</a>
+									<a href="/clientes/delete/{{cli_id}}" class="btn btn-danger" data-confirm="">Deletar</a>
+                                    <a href="/clientes/consulta/{{cli_id}}" class="btn btn-primary">Visualizar</a>
+								</td>
+							</tr>
+						{{else}}
+							<h4>Nenhum cliente cadastrado</h4>
+						{{/each}}	
+					</tbody>
+				</table>				
+			</div>
+	</div>    
+</div>
