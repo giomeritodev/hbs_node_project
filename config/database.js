@@ -14,6 +14,7 @@ connection.connect(err => {
     }else{
         createTableCategoria(connection);
         createTableProduto(connection);
+        createTableCliente(connection);
     }
 });
 
@@ -47,6 +48,35 @@ function createTableCategoria(conn){
             console.log(err.message)
         }else{
             console.log('Tabela de categorias criada');
+        }
+    });
+}
+
+function createTableCliente(conn){
+    conn.query(`
+        create table if not exists tb_clientes(
+            cli_id integer primary key auto_increment,
+            cli_tipo varchar(2) not null,
+            cli_nome varchar(255) not null,
+            cli_cpfOuCnpj varchar(100),
+            cli_email varchar(100),
+            cli_fone varchar(50),
+            cli_celular varchar(50),
+            cli_cep varchar(30),
+            cli_rua varchar(255),
+            cli_complemento varchar(100),
+            cli_numero varchar(10),
+            cli_bairro varchar(100),
+            cli_cidade varchar(255),
+            cli_estado varchar(100),
+            cli_status varchar(50),
+            cli_createdAt datetime default now()
+        );
+    `, (err, result) => {
+        if(err){
+            console.log(err.message);
+        }else{
+            console.log('Tabela de clientes criada');
         }
     });
 }

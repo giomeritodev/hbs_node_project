@@ -4,7 +4,7 @@
             <div class="cat">
                 <h4>{{title}}</h4>
                 <a href="/clientes/add">
-                    <button type="button" class="btn btn-success" accesskey="q">Nova (Alt+q)</button>
+                    <button type="button" class="btn btn-success" accesskey="q">Novo (Alt+q)</button>
                 </a>
             </div>
         </div>
@@ -15,7 +15,8 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Cliente</th>
+							<th>Cliente</th>							
+							<th>Tipo Cliente</th>							
 							<th>Ações</th>
 						</tr>
 					</thead>
@@ -23,7 +24,8 @@
 						{{#each clientes}}
 							<tr>
 								<td>{{cli_id}}</td>
-								<td>{{cli_nome}}</td>
+								<td>{{cli_nome}}</td>                                
+								<td>{{cli_tipo}}</td>                             			    
 								<td>
 								    <a href="/clientes/edit/{{cli_id}}" class="btn btn-success">Editar</a>
 									<a href="/clientes/delete/{{cli_id}}" class="btn btn-danger" data-confirm="">Deletar</a>

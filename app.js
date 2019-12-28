@@ -6,6 +6,7 @@ const logger = require('morgan');
 const expressHbs = require('express-handlebars');
 const session = require('express-session');
 const flash = require('connect-flash');
+const port = process.env.PORT || 3003;
 
 const indexRouter = require('./routes/index');
 const categoriasRouter = require('./routes/categorias');
@@ -65,6 +66,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, () => {
+    console.log('Servidor rodando na porta %s', port);
 });
 
 module.exports = app;
