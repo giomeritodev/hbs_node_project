@@ -26,4 +26,25 @@ router.post('/novo', (req, res) => {
     });
 });
 
+router.get('/edit/:id', (req, res) => {
+    const id = req.params.id;
+    clientes.find(id).then(cliente => {
+        res.render('pages/cliente/editCliente', {title: 'Alterando dados do cliente', cliente});
+    }).catch(err => {
+        req.flash('error_msg', 'Erro ao retornar dados');
+        res.redirect('/clientes');
+    });    
+});
+
+router.post('/update/:id', (req, res) => {
+    const id = req.params.id;
+    clientes.update(id, req.body).then(cliente => {        
+        req.flash('success_msg', 'Dados alterados');
+        res.redirect('/clientes');
+    }).catch(err => {
+        req.flash('error_msg', 'Erro ao alterar os dados do cliente', err.message);
+        res.redirect('/clientes');
+    });
+});
+
 module.exports = router;

@@ -17,6 +17,7 @@
 							<th>#</th>
 							<th>Cliente</th>							
 							<th>Tipo Cliente</th>							
+							<th>Status</th>							
 							<th>Ações</th>
 						</tr>
 					</thead>
@@ -26,6 +27,7 @@
 								<td>{{cli_id}}</td>
 								<td>{{cli_nome}}</td>                                
 								<td>{{cli_tipo}}</td>                             			    
+								<td>{{cli_status}}</td>                             			    
 								<td>
 								    <a href="/clientes/edit/{{cli_id}}" class="btn btn-success">Editar</a>
 									<a href="/clientes/delete/{{cli_id}}" class="btn btn-danger" data-confirm="">Deletar</a>
