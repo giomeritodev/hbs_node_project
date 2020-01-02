@@ -1,0 +1,59 @@
+    <div class="card mt-1">
+        <div class="card-header">
+            <div class="card-title">
+                {{#each cliente}}
+                    <h5>Código...........: <b>** {{cli_id}} **</b></h5>
+                    <h5>Cliente...........: <b>{{cli_nome}}</b></h5>
+                    <h5>Tipo cliente....: <b>{{cli_tipo}}</b></h5>
+                    <h5>CPF ou CNPJ: <b>{{cli_cpfOuCnpj}}</b></h5>
+                    <h5>E-mail............: <b>{{cli_email}}</b></h5>
+                    <h5>Telefone 1......: <b>{{cli_fone}}</b></h5>
+                    <h5>Telefone 2......: <b>{{cli_celular}}</b></h5>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Endereço</legend>
+                        <div class="control-group">
+                            <h6>CEP: <b>{{cli_cep}}</b></h6>
+                            <h6>Rua: <b>{{cli_rua}}</b></h6>
+                            <h6>Complemento: <b>{{cli_complemento}}</b> Número: <b>{{cli_numero}}</b></h6>
+                            <h6>Bairro: <b>{{cli_bairro}}</b></h6>
+                            <h6>Cidade: <b>{{cli_cidade}}</b> UF: <b>{{cli_estado}}</b></h6>
+                            <h6>Status: <b>{{cli_status}}</b></h6>
+                        </div>
+                    </fieldset>
+                    <p>Data: {{cli_createdAt}}</p>
+                    <small class="alert alert-warning">Pedidos relacionados ao cliente selecionado</small>
+                {{/each}}
+            </div>            
+        </div>
+        <div class="body ml-2 mt-1">
+            <table class="table responsive">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>        
+                </thead>
+{{#each pedidos}}
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+{{else}}
+            </table>           
+        </div>
+
+    </div>
+
+
+    <div class="card mt-1">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Nenhum pedido relacionado a este cliente!</h4>
+            </div>
+        </div>
+    </div>   
+{{/each}}

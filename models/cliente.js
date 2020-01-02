@@ -93,6 +93,18 @@ module.exports = {
                 }
            });
         });
+    },
+    
+    deletar(id){
+        return new Promise((resolve, reject) => {
+            conn.query(deletar, [id], (err, result) => {
+               if(err){
+                   reject(err);
+               }else{
+                   resolve(result);
+               } 
+            });
+        });
     }
     
 }

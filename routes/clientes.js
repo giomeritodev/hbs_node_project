@@ -47,4 +47,24 @@ router.post('/update/:id', (req, res) => {
     });
 });
 
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    clientes.deletar(id).then(result => {
+        req.flash('success_msg', 'Dados deletados');
+        res.redirect('/clientes');
+    }).catch(err =>{
+        req.flash('error_msg', 'Não foi possivel deletar os dados', ' => : ', err.message);
+        res.redirect('/clientes');
+    });
+});
+
+router.get('/consulta/:id', (req, res) => {
+   clientes.find(req.params.id).then(cliente => {
+       res.render('pages/cliente/listaClientePedidos', {title: 'Dados do cliente:', cliente});
+   }).catch(err => {
+       req.flash('error_msg', 'Houve um erro ao retornar os dados', err.message);
+       res.redirect('/clientes');
+   });
+});
+
 module.exports = router;
