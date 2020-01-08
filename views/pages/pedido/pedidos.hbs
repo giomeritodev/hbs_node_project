@@ -1,0 +1,42 @@
+<div class="card mt-4">
+	<div class="card-header">
+		<div class="card-menu">
+			<div class="card-title">
+				<div class="cat">
+					<h4>{{title}}</h4>
+					<a href="/pedidos/add">
+						<button type="button" class="btn btn-success" accesskey="q">Novo (Alt+q)</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+			<div>
+				<table class="table responsible">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Cliente</th>                            
+							<th>Valor Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each pedidos}}
+							<tr>
+								<td>{{ped_id}}</td>
+								<td>{{cli_id}}</td>
+								<td></td>
+								<td>
+								    <a href="/pedidos/edit/{{ped_id}}" class="btn btn-success">Editar</a>
+									<a href="/pedidos/consulta/{{ped_id}}" class="btn btn-primary">Visualizar</a>
+								</td>
+							</tr>
+						{{else}}
+							<h4>Nenhum pedido cadastrado</h4>
+						{{/each}}	
+					</tbody>
+				</table>				
+			</div>
+	</div>
+</div>

@@ -82,7 +82,7 @@ module.exports = {
            conn.query(alterar, [
                fields.prod_nome, 
                fields.prod_valor, 
-               fields.categoria_id, 
+               fields.categoria_id,
                id
            ], (err, results) => {
                if(err){

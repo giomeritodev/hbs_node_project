@@ -1,3 +1,14 @@
-<h1>Bem mais sorvetes</h1>
-<h3>A pagina solicitado não existe</h3>
-<h5>Tente novamente</h5>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Bem mais sorvetes</h1>            
+        </div>
+    </div>
+        <div class="alert alert-danger mt-4">
+            <h4>O caminho especificado não foi encontrado!</h4>        
+        </div>
+        <div class="alert alert-warning">
+            <h3>{{error.message}} {{error.status}}</h3>
+            <h5>Tente novamente!</h5>
+        </div>        
+</div>

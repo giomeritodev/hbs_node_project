@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index');
 const categoriasRouter = require('./routes/categorias');
 const produtosRouter = require('./routes/produtos');
 const clientesRouter = require('./routes/clientes');
+const pedidosRouter = require('./routes/pedidos');
 
 const app = express();
 
@@ -19,7 +20,8 @@ const app = express();
 	app.use(session({
 		secret: "g10m3ri70",
 		resave: true,
-		saveInitialized: true
+		saveInitialized: true,
+        cookie: {maxAge: 180 * 60 * 1000 }
 	}));
 
 	app.use(flash());
@@ -51,6 +53,7 @@ app.use('/', indexRouter);
 app.use('/categorias', categoriasRouter);
 app.use('/produtos', produtosRouter);
 app.use('/clientes', clientesRouter);
+app.use('/pedidos', pedidosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

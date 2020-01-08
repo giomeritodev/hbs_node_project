@@ -1,7 +1,7 @@
 const conn = require('./../config/database');
 
 //Querys da categoria
-const findAll = 'SELECT * FROM tb_categorias ORDER BY createdAt DESC';
+const findAll = 'SELECT * FROM tb_categorias ORDER BY cli_createdAt DESC';
 const insert = 'INSERT INTO tb_categorias(cat_nome) VALUES(?)';
 const find = 'SELECT * FROM tb_categorias WHERE cat_id = ?';
 const update = 'UPDATE tb_categorias SET cat_nome = ? WHERE cat_id = ?';

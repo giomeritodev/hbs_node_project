@@ -4,7 +4,7 @@
                 {{#each categoria}}
                     <h5>Código: {{cat_id}}</h5>
                     <h3>Categoria: {{cat_nome}}</h3>
-                    <p>Data: {{createdAt}}</p>
+                    <p>Data: {{cli_createdAt}}</p>
                     <small>Produtos relacionados a categoria citada</small>
                 {{/each}}
             </div>            
@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{prod_id}}</td>
                         <td>{{prod_nome}}</td>
-                        <td>R$: {{prod_valor}},00</td>
+                        <td>R$: {{prod_valor}}</td>
                     </tr>
                 </tbody>
 {{else}}

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const produtos = require('./../models/produto');
 
-
 router.get('/', (req, res) => {
     
     produtos.findAll().then(produtos => {
@@ -18,12 +17,13 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/add', (req, res) => {
+router.get('/add', (req, res) => {    
     produtos.findCategorias().then(categorias => {
         res.render('pages/produto/addProduto', {
             title: 'Adicionando novo item', 
             categorias
         });
+        
     });
 });
 
