@@ -1,103 +1,101 @@
 
-  <div class="row">{{title}} | Usuário: Giomerito</div>  
-  <div class="row">
+<div class="row mt-4">
     <div class="col">
-      <div class="card">
-            <div class="card-header">
-                <div class="card-title">
-                    
+        <form action="/pedidos/pdv/add-items-pedido" method="post">          
+            <div class="row form-group">
+                <div class="col-md-3 col-sm-12">
+                    <label for="ped_quantidade">Quantidade</label>
+                    <input type="number" class="form-control" name="ped_quantidade" required value="1">
                 </div>
-            </div>
-          
-            <div class="card-body">
-                
-                <form action="/pedidos/pdv/add-items-pedido" method="post">
-                    <div class="row form-group">
 
-                        <div class="col-md-12">
-                            <label for="cliente_id">Cliente</label>
-                            <select name="cliente_id" class="form-control">
-                                    <option value="">Favor informar o cliente</option>
-                                {{#each clientes}}
-                                    <option value="{{cli_id}}">{{cli_nome}}</option>
-                                {{else}}
-                                    <option value="">Nenhum cliente encontrado</option>
-                                {{/each}}
-                            </select>
-                        </div>
-                        
-                        <div class="col-md-4 col-sm-12">
-                            <label for="ped_quantidade">Quantidade</label>
-                            <input type="number" class="form-control" name="ped_quantidade" value="1">
-                        </div>
-                        
-                        <div class="col-md-8 col-sm-12">
-                            <label for="prod_id">Código do produto</label>
-                            <input type="text" class="form-control" id="produto_id" name="produto_id">
-                        </div>
-
-                        <div class="col-md-4 col-sm-12 mt-4">
-                            <button type="submit" id="btn-add" class="btn btn-primary">ADD ->></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="prod_id">Código do produto</label>
+                    <input type="text" class="form-control" id="produto_id" name="produto_id" autofocus="true">
+                </div>
+                <div class="col-md-3 col-sm-12" style="margin: auto;">
+                    <br>
+                    <button type="submit" id="btn-add" class="btn btn-primary">Adicionar</button>
+                </div>
+            </div>               
+        </form>
+        {{# if produtos}}
+            <div class="col-md-12 col-sm-12">
+                <table class="table-borderless responsive">
+                    <thead>
+                        <tr>
+                            <th>Cod</th>
+                            <th>Produto</th>
+                            <th>Add</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123</td>
+                            <td>Sovete</td>
+                            <td>
+                                <input type="button" class="btn btn-success btn-sm" name="" value=">>">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+        {{/if}}
+        
     </div>
-      
-  {{# if pedido }}
-      <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">
-                    Itens do pedido
-                </div>
-                <div class="card-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>SQ</th>
-                                <th>Produto</th>
-                                <th>Qtd</th>
-                                <th>Vlr.Unit</th>
-                                <th>Total Item</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+{{# if pedido }}
+<div class="col fti border"> 
+    <div class="col-md-12 mt-4 form-group">          
+        <table class="table table-sm table-borderless responsive">                        
+            Itens do pedido            
+            <p>Cliente: </p>
+            
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cod</th>
+                    <th>Produto</th>
+                    <th>Qtd</th>
+                    <th>Vlr.Unit</th>
+                    <th>Total Item</th>
+                </tr>
+            </thead>
+            <tbody>
                             
-                            {{# each pedido}}
-                       
-                                <tr>
-                                    <td>{{this.totalQtd}}</td>
-                                    <td>{{this.item.prod_nome}}</td>
-                                    <td>{{this.qtd}}</td>
-                                    <td>{{this.item.valor}}</td>
-                                    <td>{{this.valor}}</td>
-                                </tr>
-                            
-                            {{/each}}
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer">
-                    <label>Valor Total: </label>
-                    <label name="ped_total">R$: {{valorTotal}}</label>
-                </div>
-                
+                {{# each pedido}}
+                    
+                    <tr>
+                        <td>{{this.sequencia}}</td>
+                        <td>{{this.item.prod_id}}</td>
+                        <td>{{this.item.prod_nome}}</td>
+                        <td>{{this.qtd}}</td>
+                        <td>{{this.item.prod_valor}}</td>
+                        <td>{{this.valor}}</td>
+                    </tr>
+                    
+                {{/each}}
+            
+            </tbody>
+        </table>
+        <hr>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label>Total itens</label>
+                <input type="text" name="ped_totalQtd" class="form-control" disabled value="{{ totalQtd }}">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Desconto</label>
+                <input class="form-control" type="text" name="ped_desconto" >
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Valor Total</label>
+                <input class="form-control" name="ped_valorTotal" disabled value="{{ valorTotal }}">
             </div>
         </div>
     </div>    
-  </div>
+ </div>
+ </div>    
+      
 
-{{else}}
-
-<div class="card">
-    <div class="card-header">
-        <div class="card-title">
-            <h4>Nenhum item adicionado!</h4>
-        </div>
-    </div>
-</div>
-
+{{else}}  
+    <h4>Nenhum item adicionado!</h4>
 {{/ if}}

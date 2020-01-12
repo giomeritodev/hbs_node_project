@@ -28,13 +28,13 @@
                 <div class="col-md-12">
                     <label for="categoria_id">Categoria</label>
                     <select  class="form-control" name="categoria_id">                       
-                           <option value="{{categoria_id}}">{{categoria_id}} - {{cat_nome}}</option>
-        
+                        <option value="{{categoria_id}}">{{categoria_id}} - {{cat_nome}}</option>    
                         {{#each categorias}}
                             <option value="{{cat_id}}">{{cat_id}} - {{cat_nome}}</option>
                         {{else}}
-                            Nenhuma categoria encontrada!
+                            <option>Nenhuma categoria encontrada!</option>
                         {{/each}}
+                        
                     </select>
                 </div>                
         {{else}}

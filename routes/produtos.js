@@ -8,12 +8,12 @@ router.get('/', (req, res) => {
         res.render('pages/produto/produtos', {
             title: 'Lista de produtos',
             produtos
-        }).catch(err => {
-            if(err){
-                req.flash('error_msg', 'Erro ao buscar produto');
-                res.redirect('/produtos');
-            }
         });        
+    }).catch(err => {
+        if(err){
+            req.flash('error_msg', 'Erro ao buscar produto');
+            res.redirect('/produtos');
+        }
     });
 });
 
@@ -40,7 +40,8 @@ router.post('/novo', (req, res) => {
 router.get('/edit/:id', (req, res) => {
     const id = req.params.id;    
     produtos.findCategoriaProduto(id).then(produto => {
-        produtos.findCategorias().then(categorias => {
+        console.log(produto);
+        produtos.findCategorias().then(categorias => {           
             res.render('pages/produto/editProduto', {
                 title: 'Alterando item', 
                 produto,

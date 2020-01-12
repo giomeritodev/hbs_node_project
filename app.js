@@ -6,7 +6,7 @@ const logger = require('morgan');
 const expressHbs = require('express-handlebars');
 const session = require('express-session');
 const flash = require('connect-flash');
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3000;
 
 const indexRouter = require('./routes/index');
 const categoriasRouter = require('./routes/categorias');

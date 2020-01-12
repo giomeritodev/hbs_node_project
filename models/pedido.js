@@ -3,16 +3,27 @@ module.exports = function Pedido(pedido){
     this.items = pedido.items || {};
     this.totalQtd = pedido.totalQtd || 0;
     this.valorTotal = pedido.valorTotal || 0;
-
-    this.add = function(item, id){
-        const storedItem = this.items[id];
+    
+    this.sequencia = pedido.sequencia;
+    
+    this.add = function(item, id, quant){
+        var storedItem = this.items[id];
+        
+        var seq = Object.values(this.items);
+        var sq = 0;
+        
+        for(var i = 0; i <= seq.length; i++){
+            sq = i + 1;
+        }        
+        
         if(!storedItem){
-            storedItem = this.items[id] = { item: item, qtd: 0, valor: 0 };
+            storedItem = this.items[id] = {sequencia: sq, item: item, qtd: quant, valor: item.prod_valor };
         }
-        storedItem++;
-        storedItem.valor = storedItem.item.valor * storedItem.qtd;
+        
+        //storedItem.qtd++;        
+        storedItem.valor = storedItem.item.prod_valor * storedItem.qtd;
         this.totalQtd++;
-        this.valorTotal += storedItem.item.valor;
+        this.valorTotal += storedItem.valor;        
     };
 
     this.generateArray = function(){
@@ -21,6 +32,6 @@ module.exports = function Pedido(pedido){
             arr.push(this.items[id]);
         }
         return arr;
-    };    
-    
+    };
+       
 };
