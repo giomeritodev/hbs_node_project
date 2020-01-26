@@ -21,7 +21,9 @@ const app = express();
 		secret: "g10m3ri70",
 		resave: true,
 		saveInitialized: true,
-        cookie: {maxAge: 180 * 60 * 1000 }
+        cookie: { 
+        	maxAge: 180 * 60 * 5000 
+        }
 	}));
 
 	app.use(flash());

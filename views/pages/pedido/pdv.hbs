@@ -1,8 +1,25 @@
-
-<div class="row mt-4">
+<div id="pdv" class="row mt-4">
     <div class="col">
-        <form action="/pedidos/pdv/add-items-pedido" method="post">          
-            <div class="row form-group">
+        <form action="/pedidos/pdv/add-items-pedido" method="post">
+            <datalist id="produtos">
+            {{#each produtos}}
+               <option value="{{this.prod_id}}">{{this.prod_nome}} R$: {{this.prod_valor}}</option>               
+            {{/each}}
+            </datalist>
+            
+            <datalist id="clientes">
+            {{#each clientes}}
+               <option value="{{this.cli_id}}">{{this.cli_nome}}</option>               
+            {{/each}}
+            </datalist>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="cliente_id">Cliente</label>                        
+                    <input type="search" class="form-control" placeholder="Favor selecione o cliente" name="cliente_id" id="cliente_id" list="clientes" />    
+                </div>
+            </div>
+            <div class="row form-group mt-4">
                 <div class="col-md-3 col-sm-12">
                     <label for="ped_quantidade">Quantidade</label>
                     <input type="number" class="form-control" name="ped_quantidade" required value="1">
@@ -10,45 +27,21 @@
 
                 <div class="col-md-6 col-sm-12">
                     <label for="prod_id">Código do produto</label>
-                    <input type="text" class="form-control" id="produto_id" name="produto_id" autofocus="true">
+                    <input type="search" class="form-control" id="produto_id" placeholder="Selecione o produto" name="produto_id" list="produtos" autofocus="true">
                 </div>
                 <div class="col-md-3 col-sm-12" style="margin: auto;">
                     <br>
                     <button type="submit" id="btn-add" class="btn btn-primary">Adicionar</button>
                 </div>
-            </div>               
-        </form>
-        {{# if produtos}}
-            <div class="col-md-12 col-sm-12">
-                <table class="table-borderless responsive">
-                    <thead>
-                        <tr>
-                            <th>Cod</th>
-                            <th>Produto</th>
-                            <th>Add</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>Sovete</td>
-                            <td>
-                                <input type="button" class="btn btn-success btn-sm" name="" value=">>">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>  
-        {{/if}}
-        
+            </div>
+        </form>        
     </div>
+    
 {{# if pedido }}
 <div class="col fti border"> 
     <div class="col-md-12 mt-4 form-group">          
         <table class="table table-sm table-borderless responsive">                        
-            Itens do pedido            
-            <p>Cliente: </p>
-            
+            Itens do pedido
             <thead>
                 <tr>
                     <th>#</th>
